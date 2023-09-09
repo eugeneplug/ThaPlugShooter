@@ -4,6 +4,9 @@ import { Enemy } from "./enemy.js";
 import { distanceBetweenTwoPoints } from "./utilities.js";
 
 
+
+
+
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 canvas.width = document.documentElement.clientWidth;
@@ -11,6 +14,8 @@ canvas.height = document.documentElement.clientHeight;
 
 const wastedElement = document.querySelector('.wasted');
 const scoreElement = document.querySelector('#score');
+
+
 
 let player;
 let projectiles = [];
@@ -20,6 +25,8 @@ let score = 0;
 let animationId;
 let spawnIntervalId;
 let countIntervalId;
+
+
 
 startGame();
 
@@ -38,8 +45,21 @@ function init(){
     };
 
     player = new Player(canvas.width/2, canvas.height/2, context, movementLimits);
+    /*создание пули*/
     addEventListener("click", createProjectile);
+
+    /*создание звукa выстрела */
+
+    // addEventListener("click", shoot);
 };
+
+function shoot(event) {
+
+}
+
+
+
+
 
 function createProjectile(event) {
     projectiles.push (
