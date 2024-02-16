@@ -6,9 +6,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="/style.css">
     <script src="/script.js" type="module"></script>
+    <style>
+        .restart {
+            position: absolute;
+            left: 36%;
+            top: 70%;
+            font-size: 50px;
+            color: red;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
     <img src="/img/wasted.png" alt="over" class="wasted">
+    <div onclick="location.reload();" class="restart">Нажмите чтобы играть снова</div>
     <div class="score-wrap">
         <span>Score: </span>
         <span id="score">0</span>
@@ -42,16 +55,21 @@ let shoot = new Audio ("./sounds/f82cc86a1dea7e1-1.mp3")
         // Создаем объект Audio и указываем путь к аудиофайлу
 let shootSound = new Audio('./sounds/f82cc86a1dea7e1-1.mp3');
 
+
+
 document.addEventListener('click', function() {
   // Создаем клон аудио объекта
   let newShootSound = shootSound.cloneNode();
   
   // Воспроизводим аудио для нового звука
   newShootSound.play();
+  
+
 });
 
 
 
     </script>
+    
 </body>
 </html>

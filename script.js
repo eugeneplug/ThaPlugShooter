@@ -3,6 +3,8 @@ import { Projectile } from "./projectile.js";
 import { Enemy } from "./enemy.js";
 import { distanceBetweenTwoPoints } from "./utilities.js";
 
+let soundZdead = new Audio('./sounds/zombieDeath.ogg');
+
 
 
 
@@ -50,16 +52,11 @@ function init(){
 
     /*создание звукa выстрела */
 
-    // addEventListener("click", shoot);
 };
 
 function shoot(event) {
 
 }
-
-
-
-
 
 function createProjectile(event) {
     projectiles.push (
@@ -123,8 +120,24 @@ function projectileInsideWindow(projectile) {
 
 function checkHittingPlayer(enemy) {
     const distance = distanceBetweenTwoPoints(player.x, player.y, enemy.x, enemy.y);
+
+    if (distance - enemy.radius - player.radius < 0) {
+        soundZdead.play();
+        // alert('Ты убит');
+        restart();
+        
+    }
     return distance - enemy.radius - player.radius < 0;
 }
+
+function restart() {
+    let restart = document.querySelector('.restart');
+    restart.style.display = 'block'
+}
+
+
+
+
 
 
 function checkHittingEnemy(enemy) {
@@ -141,6 +154,7 @@ function checkHittingEnemy(enemy) {
         if (enemy.health < 1) {
             increaseScore();
             enemy.createExplosion(particles);
+            soundZdead.play();
         }
 
         return true;
